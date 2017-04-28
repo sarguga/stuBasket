@@ -12,6 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Estadísticas de StuBasket</h1>
+        
+        <a href="newPlayer.jsp">Añadir nuevo jugador</a>
+        <a href="newTeam.jsp">Añadir nuevo equipo rival</a>
+        <form action="AddPlayerToTeam">
+            <input type="submit" value="enviar"/>
+        </form>
     </body>
 </html>

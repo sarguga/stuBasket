@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -34,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Player.findById", query = "SELECT p FROM Player p WHERE p.id = :id"),
     @NamedQuery(name = "Player.findByPlayername", query = "SELECT p FROM Player p WHERE p.playername = :playername"),
     @NamedQuery(name = "Player.findByCity", query = "SELECT p FROM Player p WHERE p.city = :city"),
-    @NamedQuery(name = "Player.findByBirth", query = "SELECT p FROM Player p WHERE p.birth = :birth")})
+    @NamedQuery(name = "Player.findByBirth", query = "SELECT p FROM Player p WHERE p.birth = :birth"),
+    @NamedQuery(name = "Player.findByEnplantilla", query = "SELECT p FROM Player p WHERE p.enplantilla = :enplantilla")})
 public class Player implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,6 +53,10 @@ public class Player implements Serializable {
     private String city;
     @Column(name = "birth")
     private Integer birth;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "enplantilla")
+    private int enplantilla;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
     private Collection<Playergame> playergameCollection;
 
@@ -59,6 +65,11 @@ public class Player implements Serializable {
 
     public Player(Integer id) {
         this.id = id;
+    }
+
+    public Player(Integer id, int enplantilla) {
+        this.id = id;
+        this.enplantilla = enplantilla;
     }
 
     public Integer getId() {
@@ -91,6 +102,14 @@ public class Player implements Serializable {
 
     public void setBirth(Integer birth) {
         this.birth = birth;
+    }
+
+    public int getEnplantilla() {
+        return enplantilla;
+    }
+
+    public void setEnplantilla(int enplantilla) {
+        this.enplantilla = enplantilla;
     }
 
     @XmlTransient
