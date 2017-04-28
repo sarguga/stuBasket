@@ -6,7 +6,9 @@
 package servlets;
 
 import bean.StuBasketEJB;
+import entities.Game;
 import entities.Player;
+import entities.Rival;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DAM
  */
-public class AddPlayerToTeam extends HttpServlet {
+public class NewGame extends HttpServlet {
 @EJB
     StuBasketEJB ejb;
     /**
@@ -35,19 +37,31 @@ public class AddPlayerToTeam extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         if("enviar".equals(request.getParameter("submit"))){
-            int playerId = Integer.parseInt(request.getParameter("player"));
-            Player player = ejb.selectPlayerById(playerId);
-            if(ejb.addPlayerToLineup(player)){
+            Game game = new Game();
+            game.setDategame(request.getParameter("birth"));
+            if("yes".equals(request.getParameter("victory"))){
+                game.setWin(0);
+            } else {
+                game.setWin(1);
+            }
+            if("yes".equals(request.getParameter("local"))){
+                game.setHome(0);
+            } else {
+                game.setHome(1);
+            }
+            Rival r = ejb.selectRivalById(Integer.parseInt(request.getParameter("rival")));
+            game.setRival(r);
+            if(ejb.insertGame(game)){
                 request.getRequestDispatcher("result.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("noresult.jsp").forward(request, response);
             }
+        } else{
+            List<Rival> rivals = ejb.selectAllRival();
+            request.setAttribute("rivals", rivals);
+            request.getRequestDispatcher("newGame.jsp").forward(request, response);
         }
-        List<Player> players = ejb.selectPlayerByNotInLineup();
-        request.setAttribute("players", players);
-        request.getRequestDispatcher("addPlayerToTeam.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

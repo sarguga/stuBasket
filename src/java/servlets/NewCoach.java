@@ -6,13 +6,12 @@
 package servlets;
 
 import bean.StuBasketEJB;
+import entities.Coach;
 import entities.Player;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DAM
  */
-@WebServlet(name = "AddPlayer", urlPatterns = {"/AddPlayer"})
-public class AddPlayer extends HttpServlet {
+public class NewCoach extends HttpServlet {
 @EJB
     StuBasketEJB ejb;
     /**
@@ -37,9 +35,20 @@ public class AddPlayer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<Player> players = ejb.selectPlayerByNotInLineup();
-        request.setAttribute("players", players);
-        request.getRequestDispatcher("/addPLayerToTeam.jsp").forward(request, response);
+        if("enviar".equals(request.getParameter("submit"))){
+            String name = request.getParameter("name");
+            String city = request.getParameter("city");
+            int birth = Integer.parseInt(request.getParameter("birth"));
+            Coach coach = new Coach();
+            coach.setCoachname(name);
+            coach.setBirth(birth);
+            coach.setCity(city);
+            if(ejb.insertCoach(coach)){
+                request.getRequestDispatcher("result.jsp").forward(request, response);
+            } else{
+                request.getRequestDispatcher("noresult.jsp").forward(request, response);
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

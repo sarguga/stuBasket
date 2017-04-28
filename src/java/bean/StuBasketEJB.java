@@ -57,47 +57,37 @@ public class StuBasketEJB {
 
     }
     
-    
-    public boolean addPlayerToTeam(Player p){
-        EntityManager em = emf.createEntityManager();
-        Player player = selectPlayerById(p.getId());
-        player.setEnplantilla(1);
-        em.persist(player);
-        return true;
-
-    }
-    
     public boolean insertTeam(Rival r){
         EntityManager em = emf.createEntityManager();
         em.persist(r);
         return true;
     }
     
-    public Rival selectTeamById(long id){
+    public Rival selectTeamById(int id){
         EntityManager em = emf.createEntityManager();
         Rival r = em.find(Rival.class, id);
         return r;
     }
     
-    public Player selectPlayerById(long id){
+    public Player selectPlayerById(int id){
         EntityManager em = emf.createEntityManager();
         Player p = em.find(Player.class, id);
         return p;
     }
     
-    public Coach selectCoachById(long id){
+    public Coach selectCoachById(int id){
         EntityManager em = emf.createEntityManager();
         Coach c = em.find(Coach.class, id);
         return c;
     }
     
-    public Rival selectRivalById(long id){
+    public Rival selectRivalById(int id){
         EntityManager em = emf.createEntityManager();
         Rival r = em.find(Rival.class, id);
         return r;
     }
     
-    public Game selectGameById(long id){
+    public Game selectGameById(int id){
         EntityManager em = emf.createEntityManager();
         Game g = em.find(Game.class, id);
         return g;
@@ -124,6 +114,18 @@ public class StuBasketEJB {
         return q.getResultList();
     }
     
+    public List<Rival> selectAllRival(){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("select r from Rival r");
+        return q.getResultList();
+    }
+    
+    public List<Game> selectAllGames(){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("select g from Game g");
+        return q.getResultList();
+    }
+    
     public boolean addPlayerToLineup(Player p){
         EntityManager em = emf.createEntityManager();
         /*Query q = em.createQuery("select p from Player p where p.id = :id");
@@ -132,6 +134,12 @@ public class StuBasketEJB {
         player.setEnplantilla(1);
         em.persist(player);
         return true;
+    }
+
+    public List<Player> selectPlayerByInLineup() {
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("select p from Player p where p.enplantilla = 1");
+        return q.getResultList();
     }
     
 }

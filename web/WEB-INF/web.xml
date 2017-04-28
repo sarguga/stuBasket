@@ -8,6 +8,18 @@
         <servlet-name>AddPlayerToTeam</servlet-name>
         <servlet-class>servlets.AddPlayerToTeam</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewCoach</servlet-name>
+        <servlet-class>servlets.NewCoach</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewGame</servlet-name>
+        <servlet-class>servlets.NewGame</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddPlayerToGame</servlet-name>
+        <servlet-class>servlets.AddPlayerToGame</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewTeamPlayer</servlet-name>
         <url-pattern>/NewTeamPlayer</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>AddPlayerToTeam</servlet-name>
         <url-pattern>/AddPlayerToTeam</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewCoach</servlet-name>
+        <url-pattern>/NewCoach</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewGame</servlet-name>
+        <url-pattern>/NewGame</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPlayerToGame</servlet-name>
+        <url-pattern>/AddPlayerToGame</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

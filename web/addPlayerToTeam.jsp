@@ -17,7 +17,7 @@
         List<Player> players = (List<Player>) request.getAttribute("players");
     %>
     <body>
-        <form action="NewTeam" method="POST">
+        <form action="AddPlayerToTeam" method="POST">
             <select name="player">
                 <%for(Player p : players){%>
                 <option value="<%= p.getId()%>"><%= p.getPlayername()%></option>

@@ -46,9 +46,9 @@ public class Game implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Column(name = "win")
-    private Boolean win;
+    private Integer win;
     @Column(name = "home")
-    private Boolean home;
+    private Integer home;
     @Size(max = 100)
     @Column(name = "dategame")
     private String dategame;
@@ -73,19 +73,19 @@ public class Game implements Serializable {
         this.id = id;
     }
 
-    public Boolean getWin() {
+    public Integer getWin() {
         return win;
     }
 
-    public void setWin(Boolean win) {
+    public void setWin(Integer win) {
         this.win = win;
     }
 
-    public Boolean getHome() {
+    public Integer getHome() {
         return home;
     }
 
-    public void setHome(Boolean home) {
+    public void setHome(Integer home) {
         this.home = home;
     }
 

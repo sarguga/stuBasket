@@ -14,10 +14,12 @@
     <body>
         <h1>Estadísticas de StuBasket</h1>
         
-        <a href="newPlayer.jsp">Añadir nuevo jugador</a>
-        <a href="newTeam.jsp">Añadir nuevo equipo rival</a>
+        <a href="newPlayer.jsp">Añadir nuevo jugador</a><br/>
+        <a href="newTeam.jsp">Añadir nuevo equipo rival</a><br/>
+        <a href="newCoach.jsp">Añadir nuevo entrenador</a><br/>
         <form action="AddPlayerToTeam">
-            <input type="submit" value="enviar"/>
+            Añadir jugador a la plantilla <input type="submit" value="Añadir"/>
         </form>
+        <a href="NewGame">Añadir nuevo partido</a><br/>
     </body>
 </html>

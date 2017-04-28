@@ -5,10 +5,15 @@
  */
 package servlets;
 
+import bean.StuBasketEJB;
+import entities.Game;
+import entities.Player;
+import entities.Playergame;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DAM
  */
-@WebServlet(name = "AddPlayerTeam", urlPatterns = {"/AddPlayerTeam"})
-public class AddPlayerTeam extends HttpServlet {
-
+public class AddPlayerToGame extends HttpServlet {
+@EJB
+    StuBasketEJB ejb;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,18 +37,32 @@ public class AddPlayerTeam extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddPlayerTeam</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddPlayerTeam at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        if("enviar".equals(request.getParameter("submit"))){
+            int playerId = Integer.parseInt(request.getParameter("player"));
+            int gameId = Integer.parseInt(request.getParameter("game"));
+            Player player = ejb.selectPlayerById(playerId);
+            Game game = ejb.selectGameById(gameId);
+            int minutos = Integer.parseInt(request.getParameter("minutes"));
+            int points = Integer.parseInt(request.getParameter("points"));
+            int rebounds = Integer.parseInt(request.getParameter("rebounds"));
+            int asists = Integer.parseInt(request.getParameter("asists"));
+            int steals = Integer.parseInt(request.getParameter("steals"));
+            int blocks = Integer.parseInt(request.getParameter("blocks"));
+            int fieldgoalsattempted = Integer.parseInt(request.getParameter("fieldgoalsattempted"));
+            int fieldgoalsmade = Integer.parseInt(request.getParameter("fieldgoalsmade"));
+            int threepointattempted = Integer.parseInt(request.getParameter("threepointattempted"));
+            int threepointmade = Integer.parseInt(request.getParameter("threepointmade"));
+            int freethrowsattempted = Integer.parseInt(request.getParameter("freethrowsattempted"));
+            int freethrowsmade = Integer.parseInt(request.getParameter("freethrowsmade"));
+            
+            Playergame pg = new Playergame(minutos, points, rebounds, asists, steals, blocks,fieldgoalsattempted, fieldgoalsmade , threepointattempted, threepointmade, freethrowsattempted , freethrowsmade ,player, game);
+            ejb.insertPlayerGame(pg);
         }
+        List<Player> players = ejb.selectPlayerByInLineup();
+        request.setAttribute("players", players);
+        List<Game> games = ejb.selectAllGames();
+        request.setAttribute("games", games);
+        request.getRequestDispatcher("addPlayerToGame.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

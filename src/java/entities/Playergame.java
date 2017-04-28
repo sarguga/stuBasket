@@ -44,9 +44,8 @@ public class Playergame implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected PlayergamePK playergamePK;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "minutes")
-    private Double minutes;
+    private Integer minutes;
     @Column(name = "points")
     private Integer points;
     @Column(name = "rebounds")
@@ -87,6 +86,23 @@ public class Playergame implements Serializable {
         this.playergamePK = new PlayergamePK(idplayer, idgame);
     }
 
+    public Playergame(Integer minutes, Integer points, Integer rebounds, Integer asists, Integer steals, Integer blocks, Integer fieldgoalsattempted, Integer fieldgoalsmade, Integer threepointattempted, Integer threepointmade, Integer freethrowsattempted, Integer freethrowsmade, Player player, Game game) {
+        this.minutes = minutes;
+        this.points = points;
+        this.rebounds = rebounds;
+        this.asists = asists;
+        this.steals = steals;
+        this.blocks = blocks;
+        this.fieldgoalsattempted = fieldgoalsattempted;
+        this.fieldgoalsmade = fieldgoalsmade;
+        this.threepointattempted = threepointattempted;
+        this.threepointmade = threepointmade;
+        this.freethrowsattempted = freethrowsattempted;
+        this.freethrowsmade = freethrowsmade;
+        this.player = player;
+        this.game = game;
+    }
+
     public PlayergamePK getPlayergamePK() {
         return playergamePK;
     }
@@ -95,11 +111,11 @@ public class Playergame implements Serializable {
         this.playergamePK = playergamePK;
     }
 
-    public Double getMinutes() {
+    public Integer getMinutes() {
         return minutes;
     }
 
-    public void setMinutes(Double minutes) {
+    public void setMinutes(Integer minutes) {
         this.minutes = minutes;
     }
 
