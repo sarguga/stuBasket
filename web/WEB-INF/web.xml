@@ -20,6 +20,10 @@
         <servlet-name>AddPlayerToGame</servlet-name>
         <servlet-class>servlets.AddPlayerToGame</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddPlayerGame</servlet-name>
+        <servlet-class>servlets.AddPlayerGame</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewTeamPlayer</servlet-name>
         <url-pattern>/NewTeamPlayer</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>AddPlayerToGame</servlet-name>
         <url-pattern>/AddPlayerToGame</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPlayerGame</servlet-name>
+        <url-pattern>/AddPlayerGame</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -9,6 +9,7 @@ import bean.StuBasketEJB;
 import entities.Game;
 import entities.Player;
 import entities.Playergame;
+import entities.PlayergamePK;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -42,6 +43,7 @@ public class AddPlayerToGame extends HttpServlet {
             int gameId = Integer.parseInt(request.getParameter("game"));
             Player player = ejb.selectPlayerById(playerId);
             Game game = ejb.selectGameById(gameId);
+            System.out.print(game.toString());
             int minutos = Integer.parseInt(request.getParameter("minutes"));
             int points = Integer.parseInt(request.getParameter("points"));
             int rebounds = Integer.parseInt(request.getParameter("rebounds"));
@@ -54,9 +56,18 @@ public class AddPlayerToGame extends HttpServlet {
             int threepointmade = Integer.parseInt(request.getParameter("threepointmade"));
             int freethrowsattempted = Integer.parseInt(request.getParameter("freethrowsattempted"));
             int freethrowsmade = Integer.parseInt(request.getParameter("freethrowsmade"));
-            
-            Playergame pg = new Playergame(minutos, points, rebounds, asists, steals, blocks,fieldgoalsattempted, fieldgoalsmade , threepointattempted, threepointmade, freethrowsattempted , freethrowsmade ,player, game);
-            ejb.insertPlayerGame(pg);
+            PlayergamePK pk = new PlayergamePK();
+            pk.setIdgame(gameId);
+            pk.setIdplayer(playerId);
+            Playergame pg = new Playergame();
+            pg.setMinutes(minutos);pg.setPoints(points);pg.setAsists(asists);pg.setBlocks(blocks);pg.setSteals(steals);pg.setRebounds(rebounds);
+            pg.setFieldgoalsattempted(fieldgoalsattempted);pg.setFieldgoalsmade(fieldgoalsmade);pg.setThreepointattempted(threepointattempted);pg.setThreepointmade(threepointmade);
+            pg.setFreethrowsattempted(freethrowsattempted);pg.setFreethrowsmade(freethrowsmade);pg.setPlayer(player);pg.setGame(game);pg.setPlayergamePK(pk);
+            if(ejb.insertPlayerGame(pg)){
+              request.getRequestDispatcher("result.jsp").forward(request, response);
+            } else{
+              request.getRequestDispatcher("noresult.jsp").forward(request, response);
+            }
         }
         List<Player> players = ejb.selectPlayerByInLineup();
         request.setAttribute("players", players);

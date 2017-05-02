@@ -9,6 +9,7 @@ import entities.Coach;
 import entities.Game;
 import entities.Player;
 import entities.Playergame;
+import entities.PlayergamePK;
 import entities.Rival;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -52,8 +53,17 @@ public class StuBasketEJB {
     
     public boolean insertPlayerGame(Playergame pg){
         EntityManager em = emf.createEntityManager();
-        em.persist(pg);
-        return true;
+        PlayergamePK pk = new PlayergamePK(); 
+        pk.setIdgame(pg.getGame().getId());
+        pk.setIdplayer(pg.getPlayer().getId());
+        Playergame exists = em.find(Playergame.class, pk);
+        if (exists==null){
+            em.persist(pg);
+            return true;
+        } else {
+            return false;
+        }
+        
 
     }
     

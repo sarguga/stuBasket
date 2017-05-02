@@ -17,9 +17,9 @@
         <a href="newPlayer.jsp">Añadir nuevo jugador</a><br/>
         <a href="newTeam.jsp">Añadir nuevo equipo rival</a><br/>
         <a href="newCoach.jsp">Añadir nuevo entrenador</a><br/>
-        <form action="AddPlayerToTeam">
-            Añadir jugador a la plantilla <input type="submit" value="Añadir"/>
-        </form>
+        <a href="AddPlayerToTeam">Añadir jugador a la plantilla</a><br/>
         <a href="NewGame">Añadir nuevo partido</a><br/>
+        <a href="AddPlayerToGame">Añadir un jugador a un partido</a><br/>
+        <a href="estadisticas.jsp">Estadisticas</a><br/>
     </body>
 </html>
