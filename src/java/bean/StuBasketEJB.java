@@ -8,6 +8,7 @@ package bean;
 import entities.Coach;
 import entities.Game;
 import entities.Player;
+import entities.PlayerGameDTO;
 import entities.Playergame;
 import entities.PlayergamePK;
 import entities.Rival;
@@ -150,6 +151,78 @@ public class StuBasketEJB {
         EntityManager em = emf.createEntityManager();
         Query q = em.createQuery("select p from Player p where p.enplantilla = 1");
         return q.getResultList();
+    }
+    
+    public PlayerGameDTO AveragePlayers() {
+        double points = 0;
+        double asists = 0;
+        double rebounds = 0;
+        double steals = 0;
+        double blocks = 0;
+        double fieldgoalsattempted = 0;
+        double fieldgoalsmade = 0;
+        double threepointattempted = 0;
+        double threepointmade = 0;
+        double freethrowsattempted = 0;
+        double freethrowsmade = 0; 
+        int count=0;
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("select pg from Playergame pg");
+        List<Playergame> playersgame = q.getResultList();
+        for (Playergame pg : playersgame){
+            points+=pg.getPoints();
+            asists+=pg.getAsists();
+            rebounds+=pg.getRebounds();
+            steals+=pg.getSteals();
+            blocks+=pg.getBlocks();
+            fieldgoalsattempted+=pg.getFieldgoalsattempted();
+            fieldgoalsmade+=pg.getFieldgoalsmade();
+            threepointattempted+=pg.getThreepointattempted();
+            threepointmade+=pg.getThreepointmade();
+            freethrowsattempted+=pg.getFreethrowsattempted();
+            freethrowsmade+=pg.getFreethrowsmade();
+            
+            count++;
+        }
+        
+        PlayerGameDTO pgdto = new PlayerGameDTO(points/count, asists/count, rebounds/count, steals/count, blocks/count, fieldgoalsattempted/count, fieldgoalsmade/count, threepointattempted/count, threepointmade/count, freethrowsattempted/count, freethrowsmade/count);
+        return pgdto;
+    }
+    
+    public PlayerGameDTO AveragePlayersInLineup() {
+        double points = 0;
+        double asists = 0;
+        double rebounds = 0;
+        double steals = 0;
+        double blocks = 0;
+        double fieldgoalsattempted = 0;
+        double fieldgoalsmade = 0;
+        double threepointattempted = 0;
+        double threepointmade = 0;
+        double freethrowsattempted = 0;
+        double freethrowsmade = 0; 
+        int count=0;
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("select pg from Playergame pg, Player p where p.id=pg.idplayer and p.enplantilla=1");
+        List<Playergame> playersgame = q.getResultList();
+        for (Playergame pg : playersgame){
+            points+=pg.getPoints();
+            asists+=pg.getAsists();
+            rebounds+=pg.getRebounds();
+            steals+=pg.getSteals();
+            blocks+=pg.getBlocks();
+            fieldgoalsattempted+=pg.getFieldgoalsattempted();
+            fieldgoalsmade+=pg.getFieldgoalsmade();
+            threepointattempted+=pg.getThreepointattempted();
+            threepointmade+=pg.getThreepointmade();
+            freethrowsattempted+=pg.getFreethrowsattempted();
+            freethrowsmade+=pg.getFreethrowsmade();
+            
+            count++;
+        }
+        
+        PlayerGameDTO pgdto = new PlayerGameDTO(points/count, asists/count, rebounds/count, steals/count, blocks/count, fieldgoalsattempted/count, fieldgoalsmade/count, threepointattempted/count, threepointmade/count, freethrowsattempted/count, freethrowsmade/count);
+        return pgdto;
     }
     
 }

@@ -24,6 +24,14 @@
         <servlet-name>AddPlayerGame</servlet-name>
         <servlet-class>servlets.AddPlayerGame</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AveragePlayers</servlet-name>
+        <servlet-class>servlets.AveragePlayers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AveragePlayersInLineup</servlet-name>
+        <servlet-class>servlets.AveragePlayersInLineup</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewTeamPlayer</servlet-name>
         <url-pattern>/NewTeamPlayer</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>AddPlayerGame</servlet-name>
         <url-pattern>/AddPlayerGame</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AveragePlayers</servlet-name>
+        <url-pattern>/AveragePlayers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AveragePlayersInLineup</servlet-name>
+        <url-pattern>/AveragePlayersInLineup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
