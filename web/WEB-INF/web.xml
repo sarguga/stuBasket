@@ -32,6 +32,14 @@
         <servlet-name>AveragePlayersInLineup</servlet-name>
         <servlet-class>servlets.AveragePlayersInLineup</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllGamesOfPlayer</servlet-name>
+        <servlet-class>servlets.AllGamesOfPlayer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AverageAllPlayers</servlet-name>
+        <servlet-class>servlets.AverageAllPlayers</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewTeamPlayer</servlet-name>
         <url-pattern>/NewTeamPlayer</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>AveragePlayersInLineup</servlet-name>
         <url-pattern>/AveragePlayersInLineup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllGamesOfPlayer</servlet-name>
+        <url-pattern>/AllGamesOfPlayer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageAllPlayers</servlet-name>
+        <url-pattern>/AverageAllPlayers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

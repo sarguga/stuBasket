@@ -14,6 +14,8 @@
     <body>
         <h1>Estadisticas</h1>
         <a href="AveragePlayers">Media de todos los jugadores en plantilla</a><br/>
-        <a href="AveragePlayersInLineup">Media de todos los jugadores en plantilla</a>
+        <a href="AveragePlayersInLineup">Media de todos los jugadores en plantilla</a><br/>
+        <a href="AllGamesOfPlayer">Estadisticas de un jugador</a><br/>
+        <a href="AverageAllPlayers">Estadisticas de un jugador</a><br/>
     </body>
 </html>
