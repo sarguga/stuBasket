@@ -6,12 +6,14 @@
 package bean;
 
 import entities.Coach;
+import entities.EstadisticasDTO;
 import entities.Game;
 import entities.Player;
 import entities.PlayerGameDTO;
 import entities.Playergame;
 import entities.PlayergamePK;
 import entities.Rival;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -153,6 +155,12 @@ public class StuBasketEJB {
         return q.getResultList();
     }
     
+    public List<Player> selectPlayers() {
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("select p from Player p");
+        return q.getResultList();
+    }
+    
     public PlayerGameDTO AveragePlayers() {
         double points = 0;
         double asists = 0;
@@ -189,6 +197,8 @@ public class StuBasketEJB {
         return pgdto;
     }
     
+    // select p.player, avg(p.points) from Playergame p groub by p.player
+    
     public PlayerGameDTO AveragePlayersInLineup() {
         double points = 0;
         double asists = 0;
@@ -203,7 +213,7 @@ public class StuBasketEJB {
         double freethrowsmade = 0; 
         int count=0;
         EntityManager em = emf.createEntityManager();
-        Query q = em.createQuery("select pg from Playergame pg, Player p where p.id=pg.idplayer and p.enplantilla=1");
+        Query q = em.createQuery("select pg from Playergame pg where pg.player.enplantilla=1 ");
         List<Playergame> playersgame = q.getResultList();
         for (Playergame pg : playersgame){
             points+=pg.getPoints();
@@ -223,6 +233,24 @@ public class StuBasketEJB {
         
         PlayerGameDTO pgdto = new PlayerGameDTO(points/count, asists/count, rebounds/count, steals/count, blocks/count, fieldgoalsattempted/count, fieldgoalsmade/count, threepointattempted/count, threepointmade/count, freethrowsattempted/count, freethrowsmade/count);
         return pgdto;
+    }
+    
+    public List<Playergame> selectPlayergamesByPlayer(int idplayer){
+        EntityManager em = emf.createEntityManager();
+        Player player = selectPlayerById(idplayer);
+        Query q = em.createQuery("select pg from Playergame pg where pg.player= :player");
+        q.setParameter("player", player);
+        List<Playergame> playergame = q.getResultList();
+        return playergame;
+    } 
+    public List<EstadisticasDTO> selectAverageOfPlayers(){
+    List<EstadisticasDTO> estadisticas = new ArrayList();
+        List lista = emf.createEntityManager().createQuery("select p.player, avg(p.points), avg(p.asists), avg(p.rebounds), avg(p.steals), avg(p.blocks), avg(p.fieldgoalsattempted), avg(p.fieldgoalsmade), avg(p.threepointattempted), avg(p.threepointmade), avg(p.freethrowsattempted), avg(p.freethrowsmade) from Playergame p group by p.player").getResultList();
+        for(Object a: lista){
+            Object[] actual = (Object[]) a;
+            estadisticas.add(new EstadisticasDTO((Player)actual[0], (double)actual[1], (double)actual[2], (double)actual[3], (double)actual[4], (double)actual[5], (double)actual[6], (double)actual[7], (double)actual[8], (double)actual[9], (double)actual[10], (double)actual[11]));
+        }
+        return estadisticas;
     }
     
 }
