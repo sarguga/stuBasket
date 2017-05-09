@@ -44,6 +44,14 @@
         <servlet-name>AllGamesOfTeam</servlet-name>
         <servlet-class>servlets.AllGamesOfTeam</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeWins</servlet-name>
+        <servlet-class>servlets.HomeWins</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeWinsGames</servlet-name>
+        <servlet-class>servlets.HomeWinsGames</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewTeamPlayer</servlet-name>
         <url-pattern>/NewTeamPlayer</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>AllGamesOfTeam</servlet-name>
         <url-pattern>/AllGamesOfTeam</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeWins</servlet-name>
+        <url-pattern>/HomeWins</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeWinsGames</servlet-name>
+        <url-pattern>/HomeWinsGames</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

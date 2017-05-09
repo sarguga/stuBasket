@@ -18,5 +18,6 @@
         <a href="AllGamesOfPlayer">Estadisticas de un jugador</a><br/>
         <a href="AverageAllPlayers">Estadisticas de los jugadores</a><br/>
         <a href="AllGamesOfTeam">Estadisticas contra un rival</a><br/>
+        <a href="HomeWinsGames">Partidos ganados en casa</a><br/>
     </body>
 </html>

@@ -267,4 +267,10 @@ public class StuBasketEJB {
         return estadisticas;
     }
     
+    public List<Game> selectHomeWins(){
+        List<Game> estadisticas = new ArrayList();
+        estadisticas = emf.createEntityManager().createQuery("select g from Game g where g.local=0 and g.win=0 ").getResultList();
+        return estadisticas;
+    }
+    
 }
