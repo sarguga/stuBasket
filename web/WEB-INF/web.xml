@@ -40,6 +40,10 @@
         <servlet-name>AverageAllPlayers</servlet-name>
         <servlet-class>servlets.AverageAllPlayers</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllGamesOfTeam</servlet-name>
+        <servlet-class>servlets.AllGamesOfTeam</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewTeamPlayer</servlet-name>
         <url-pattern>/NewTeamPlayer</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>AverageAllPlayers</servlet-name>
         <url-pattern>/AverageAllPlayers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllGamesOfTeam</servlet-name>
+        <url-pattern>/AllGamesOfTeam</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

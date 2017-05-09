@@ -253,4 +253,18 @@ public class StuBasketEJB {
         return estadisticas;
     }
     
+    public List<EstadisticasDTO> selectAverageOfPlayersByTeam(int t){
+        EntityManager em = emf.createEntityManager();
+        Rival team = selectRivalById(t);
+        List<EstadisticasDTO> estadisticas = new ArrayList();
+        Query q = em.createQuery("select p.player, avg(p.points), avg(p.asists), avg(p.rebounds), avg(p.steals), avg(p.blocks), avg(p.fieldgoalsattempted), avg(p.fieldgoalsmade), avg(p.threepointattempted), avg(p.threepointmade), avg(p.freethrowsattempted), avg(p.freethrowsmade) from Playergame p where p.game.rival= :rival group by p.player");
+        q.setParameter("rival", team);
+        List lista = q.getResultList();
+        for(Object a: lista){
+            Object[] actual = (Object[]) a;
+            estadisticas.add(new EstadisticasDTO((Player)actual[0], (double)actual[1], (double)actual[2], (double)actual[3], (double)actual[4], (double)actual[5], (double)actual[6], (double)actual[7], (double)actual[8], (double)actual[9], (double)actual[10], (double)actual[11]));
+        }
+        return estadisticas;
+    }
+    
 }
