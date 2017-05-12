@@ -39,7 +39,6 @@ CREATE TABLE `coach` (
 
 LOCK TABLES `coach` WRITE;
 /*!40000 ALTER TABLE `coach` DISABLE KEYS */;
-INSERT INTO `coach` VALUES (1,'alvaro','barcelona',2);
 /*!40000 ALTER TABLE `coach` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +67,6 @@ CREATE TABLE `game` (
 
 LOCK TABLES `game` WRITE;
 /*!40000 ALTER TABLE `game` DISABLE KEYS */;
-INSERT INTO `game` VALUES (1,1,0,0,'123'),(2,1,0,0,'456'),(3,1,0,0,'465'),(4,1,1,1,'11'),(5,1,1,1,'11111'),(6,1,1,1,'22222'),(7,1,0,0,'000000000'),(8,1,1,1,'1111111111111'),(9,1,0,0,'12'),(10,1,1,0,'32'),(11,1,1,1,'23'),(12,1,0,1,'4545454545454545');
 /*!40000 ALTER TABLE `game` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +84,7 @@ CREATE TABLE `player` (
   `birth` int(11) DEFAULT NULL,
   `enplantilla` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +93,6 @@ CREATE TABLE `player` (
 
 LOCK TABLES `player` WRITE;
 /*!40000 ALTER TABLE `player` DISABLE KEYS */;
-INSERT INTO `player` VALUES (1,'rrr','rrrr',4,1),(2,'asseffaaaa','aaa',1,1),(3,'qwqwqwqw','qwqwqw',12121,1),(4,'1','1',1,1),(5,'rrr','rrrr',4,1),(6,'1','1',1,1),(7,'qwqwqwqw','qwqwqw',12121,1),(8,'asseffaaaa','aaa',1,1),(9,'122','22',22,1),(10,'122','22',22,1);
 /*!40000 ALTER TABLE `player` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +131,6 @@ CREATE TABLE `playergame` (
 
 LOCK TABLES `playergame` WRITE;
 /*!40000 ALTER TABLE `playergame` DISABLE KEYS */;
-INSERT INTO `playergame` VALUES (1,1,1,1,1,1,1,1,1,1,1,1,1,1),(1,7,1,1,1,1,1,1,1,1,1,1,1,1),(1,8,12,13,8,9,7,7,7,8,6,5,7,7),(2,2,8,8,8,8,8,8,8,8,8,8,8,8),(4,6,122,222,2,222,222,222,22,222,222,222,222,222),(5,1,1,1,1,1,1,1,1,1,1,1,1,1);
 /*!40000 ALTER TABLE `playergame` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +155,6 @@ CREATE TABLE `rival` (
 
 LOCK TABLES `rival` WRITE;
 /*!40000 ALTER TABLE `rival` DISABLE KEYS */;
-INSERT INTO `rival` VALUES (1,'aasas','111'),(2,NULL,NULL);
 /*!40000 ALTER TABLE `rival` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -172,4 +167,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-12 18:58:44
+-- Dump completed on 2017-05-12 20:47:51
