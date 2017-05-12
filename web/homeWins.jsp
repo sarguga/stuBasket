@@ -33,8 +33,8 @@
                 
             %>
             <tr>
-                <td><%= game.getRival().getTeamname()%></td>
                 <td><%= game.getDategame()%></td>
+                <td><%= game.getRival().getTeamname()%></td>
             </tr>
             <% } %>     
         </table>

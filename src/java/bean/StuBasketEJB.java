@@ -252,6 +252,42 @@ public class StuBasketEJB {
         }
         return estadisticas;
     }
+    public List<EstadisticasDTO> selectAverageOfPlayersInWins(){
+    List<EstadisticasDTO> estadisticas = new ArrayList();
+        List lista = emf.createEntityManager().createQuery("select p.player, avg(p.points), avg(p.asists), avg(p.rebounds), avg(p.steals), avg(p.blocks), avg(p.fieldgoalsattempted), avg(p.fieldgoalsmade), avg(p.threepointattempted), avg(p.threepointmade), avg(p.freethrowsattempted), avg(p.freethrowsmade) from Playergame p where p.game.win=0 group by p.player").getResultList();
+        for(Object a: lista){
+            Object[] actual = (Object[]) a;
+            estadisticas.add(new EstadisticasDTO((Player)actual[0], (double)actual[1], (double)actual[2], (double)actual[3], (double)actual[4], (double)actual[5], (double)actual[6], (double)actual[7], (double)actual[8], (double)actual[9], (double)actual[10], (double)actual[11]));
+        }
+        return estadisticas;
+    }
+    public List<EstadisticasDTO> selectAverageOfPlayersInDefeats(){
+    List<EstadisticasDTO> estadisticas = new ArrayList();
+        List lista = emf.createEntityManager().createQuery("select p.player, avg(p.points), avg(p.asists), avg(p.rebounds), avg(p.steals), avg(p.blocks), avg(p.fieldgoalsattempted), avg(p.fieldgoalsmade), avg(p.threepointattempted), avg(p.threepointmade), avg(p.freethrowsattempted), avg(p.freethrowsmade) from Playergame p where p.game.win=1 group by p.player").getResultList();
+        for(Object a: lista){
+            Object[] actual = (Object[]) a;
+            estadisticas.add(new EstadisticasDTO((Player)actual[0], (double)actual[1], (double)actual[2], (double)actual[3], (double)actual[4], (double)actual[5], (double)actual[6], (double)actual[7], (double)actual[8], (double)actual[9], (double)actual[10], (double)actual[11]));
+        }
+        return estadisticas;
+    }
+    public List<EstadisticasDTO> selectAverageOfPlayersInHome(){
+    List<EstadisticasDTO> estadisticas = new ArrayList();
+        List lista = emf.createEntityManager().createQuery("select p.player, avg(p.points), avg(p.asists), avg(p.rebounds), avg(p.steals), avg(p.blocks), avg(p.fieldgoalsattempted), avg(p.fieldgoalsmade), avg(p.threepointattempted), avg(p.threepointmade), avg(p.freethrowsattempted), avg(p.freethrowsmade) from Playergame p where p.game.home=0 group by p.player").getResultList();
+        for(Object a: lista){
+            Object[] actual = (Object[]) a;
+            estadisticas.add(new EstadisticasDTO((Player)actual[0], (double)actual[1], (double)actual[2], (double)actual[3], (double)actual[4], (double)actual[5], (double)actual[6], (double)actual[7], (double)actual[8], (double)actual[9], (double)actual[10], (double)actual[11]));
+        }
+        return estadisticas;
+    }
+    public List<EstadisticasDTO> selectAverageOfPlayersInAway(){
+    List<EstadisticasDTO> estadisticas = new ArrayList();
+        List lista = emf.createEntityManager().createQuery("select p.player, avg(p.points), avg(p.asists), avg(p.rebounds), avg(p.steals), avg(p.blocks), avg(p.fieldgoalsattempted), avg(p.fieldgoalsmade), avg(p.threepointattempted), avg(p.threepointmade), avg(p.freethrowsattempted), avg(p.freethrowsmade) from Playergame p where p.game.home=1 group by p.player").getResultList();
+        for(Object a: lista){
+            Object[] actual = (Object[]) a;
+            estadisticas.add(new EstadisticasDTO((Player)actual[0], (double)actual[1], (double)actual[2], (double)actual[3], (double)actual[4], (double)actual[5], (double)actual[6], (double)actual[7], (double)actual[8], (double)actual[9], (double)actual[10], (double)actual[11]));
+        }
+        return estadisticas;
+    }
     
     public List<EstadisticasDTO> selectAverageOfPlayersByTeam(int t){
         EntityManager em = emf.createEntityManager();
@@ -265,12 +301,30 @@ public class StuBasketEJB {
             estadisticas.add(new EstadisticasDTO((Player)actual[0], (double)actual[1], (double)actual[2], (double)actual[3], (double)actual[4], (double)actual[5], (double)actual[6], (double)actual[7], (double)actual[8], (double)actual[9], (double)actual[10], (double)actual[11]));
         }
         return estadisticas;
-    }
+    }    
+    
     
     public List<Game> selectHomeWins(){
         List<Game> estadisticas = new ArrayList();
-        estadisticas = emf.createEntityManager().createQuery("select g from Game g where g.local=0 and g.win=0 ").getResultList();
+        estadisticas = emf.createEntityManager().createQuery("select g from Game g where g.home=0 and g.win=0 ").getResultList();
         return estadisticas;
     }
     
+    public List<Game> selectAwayWins(){
+        List<Game> estadisticas = new ArrayList();
+        estadisticas = emf.createEntityManager().createQuery("select g from Game g where g.home=1 and g.win=0 ").getResultList();
+        return estadisticas;
+    }
+    
+    public List<Game> selectHomeDefeats(){
+        List<Game> estadisticas = new ArrayList();
+        estadisticas = emf.createEntityManager().createQuery("select g from Game g where g.home=0 and g.win=1 ").getResultList();
+        return estadisticas;
+    }
+    
+    public List<Game> selectAwayDefeats(){
+        List<Game> estadisticas = new ArrayList();
+        estadisticas = emf.createEntityManager().createQuery("select g from Game g where g.home=1 and g.win=1 ").getResultList();
+        return estadisticas;
+    }
 }

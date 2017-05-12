@@ -52,6 +52,34 @@
         <servlet-name>HomeWinsGames</servlet-name>
         <servlet-class>servlets.HomeWinsGames</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeDefeats</servlet-name>
+        <servlet-class>servlets.HomeDefeats</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AwayWins</servlet-name>
+        <servlet-class>servlets.AwayWins</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AwayDefeats</servlet-name>
+        <servlet-class>servlets.AwayDefeats</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AverageAllPlayersWin</servlet-name>
+        <servlet-class>servlets.AverageAllPlayersWin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AverageAllPlayersDefeat</servlet-name>
+        <servlet-class>servlets.AverageAllPlayersDefeat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AverageAllPlayersHome</servlet-name>
+        <servlet-class>servlets.AverageAllPlayersHome</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AverageAllPlayersAway</servlet-name>
+        <servlet-class>servlets.AverageAllPlayersAway</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewTeamPlayer</servlet-name>
         <url-pattern>/NewTeamPlayer</url-pattern>
@@ -103,6 +131,34 @@
     <servlet-mapping>
         <servlet-name>HomeWinsGames</servlet-name>
         <url-pattern>/HomeWinsGames</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeDefeats</servlet-name>
+        <url-pattern>/HomeDefeats</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AwayWins</servlet-name>
+        <url-pattern>/AwayWins</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AwayDefeats</servlet-name>
+        <url-pattern>/AwayDefeats</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageAllPlayersWin</servlet-name>
+        <url-pattern>/AverageAllPlayersWin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageAllPlayersDefeat</servlet-name>
+        <url-pattern>/AverageAllPlayersDefeat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageAllPlayersHome</servlet-name>
+        <url-pattern>/AverageAllPlayersHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageAllPlayersAway</servlet-name>
+        <url-pattern>/AverageAllPlayersAway</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
