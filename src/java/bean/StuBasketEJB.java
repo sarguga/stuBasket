@@ -139,11 +139,12 @@ public class StuBasketEJB {
         return q.getResultList();
     }
     
+    
     public boolean addPlayerToLineup(Player p){
         EntityManager em = emf.createEntityManager();
         /*Query q = em.createQuery("select p from Player p where p.id = :id");
         q.setParameter("id", p.getId());*/
-        Player player = selectPlayerById(p.getId());
+        Player player = em.find(Player.class, p.getId());
         player.setEnplantilla(1);
         em.persist(player);
         return true;

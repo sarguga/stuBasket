@@ -43,7 +43,12 @@ public class NewTeamPlayer extends HttpServlet {
             player.setBirth(birth);
             player.setCity(city);
             player.setEnplantilla(0);
-            ejb.insertPlayer(player);
+            
+            if(ejb.insertPlayer(player)){
+                request.getRequestDispatcher("result.jsp").forward(request, response);
+            } else{
+                request.getRequestDispatcher("noresult.jsp").forward(request, response);
+            }
         }
     }
 

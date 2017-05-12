@@ -43,7 +43,12 @@ public class NewTeam extends HttpServlet {
             Rival rival = new Rival();
             rival.setTeamname(name);
             rival.setCity(city);
-            ejb.insertTeam(rival);
+            if(ejb.insertTeam(rival)){
+                request.getRequestDispatcher("result.jsp").forward(request, response);
+            } else{
+                request.getRequestDispatcher("noresult.jsp").forward(request, response);
+            }
+            
         }
     }
 
