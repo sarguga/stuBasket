@@ -12,14 +12,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <title>¿?</title>
     </head>
      <%
         List<Game> games = (List<Game>) request.getAttribute("games");
     %>
     <body>
-        <h1>Media los jugadores</h1><br/>
-        <table border="1">
+         <div id="ttlh1">
+        <h1>Stats</h1><br/>
+         </div>
+         <!--MENU -->
+        <section>
+            <nav id="menu">
+                <ul>
+                    <li><a href="main.jsp">Inicio</a></li>
+                    <li><a href="estadisticas.jsp">Estadisticas</a></li>
+                </ul>
+            </nav>
+        </section>
+        <!--END MENU -->
+        <table id="tab">
             <tr><td>
                     Fecha
                 </td>
@@ -38,5 +51,6 @@
             </tr>
             <% } %>     
         </table>
+         </div>
         </body>
 </html>

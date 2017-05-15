@@ -10,23 +10,40 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <title>Media jugadores en la plantilla</title>
     </head>
     <%
         PlayerGameDTO players = (PlayerGameDTO) request.getAttribute("playergame");
     %>
     <body>
-        <h1>Media de todos los jugadores</h1>
-        Puntos: <%= players.getPoints()%><br/>
-        Asistencias: <%= players.getAsists()%><br/>
-        Rebotes: <%= players.getRebounds()%><br/>
-        Robos: <%= players.getSteals()%><br/>
-        Tapones: <%= players.getBlocks()%><br/>
-        Tiros intentados: <%= players.getFieldgoalsattempted()%><br/>
-        Tiros anotados: <%= players.getFieldgoalsmade()%><br/>
-        Triples intentados: <%= players.getThreepointattempted()%><br/>
-        Triples anotados: <%= players.getThreepointmade()%><br/>
-        Tiros libres intentados: <%= players.getFreethrowsattempted()%><br/>
-        Tiros libres anotados: <%= players.getFreethrowsmade()%><br/>       
+        <div id="ttlh1">
+       <h1>Media de todos los jugadores en la plantilla</h1>
+        </div>
+        <!--MENU -->
+        <section>
+            <nav id="menu">
+                <ul>
+                    <li><a href="main.jsp">Inicio</a></li>
+                    <li><a href="estadisticas.jsp">Estadisticas</a></li>
+                </ul>
+            </nav>
+        </section>
+        <!--END MENU -->
+        <div id="form">
+            <div id="formulario">
+                Puntos: <%= players.getPoints()%><br/>
+                Asistencias: <%= players.getAsists()%><br/>
+                Rebotes: <%= players.getRebounds()%><br/>
+                Robos: <%= players.getSteals()%><br/>
+                Tapones: <%= players.getBlocks()%><br/>
+                Tiros intentados: <%= players.getFieldgoalsattempted()%><br/>
+                Tiros anotados: <%= players.getFieldgoalsmade()%><br/>
+                Triples intentados: <%= players.getThreepointattempted()%><br/>
+                Triples anotados: <%= players.getThreepointmade()%><br/>
+                Tiros libres intentados: <%= players.getFreethrowsattempted()%><br/>
+                Tiros libres anotados: <%= players.getFreethrowsmade()%><br/>  
+            </div>
+        </div>
     </body>
 </html>

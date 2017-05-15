@@ -9,10 +9,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <title>ERROR!</title>
     </head>
     <body>
+        <div id="ttlh1">
         <h1>Ha habido un error en la gestión</h1>
-        <a href="main.jsp">Home</a>
+        </div>
+        <!--MENU -->
+        <section>
+            <nav id="menu">
+                <ul>
+                    <li><a href="main.jsp">Inicio</a></li>
+                </ul>
+            </nav>
+        </section>
+        <!--END MENU -->
+        <div id="form">
+            <div id="error">
+                <img src="img/error.png"/>
+            </div>
+        </div>
     </body>
 </html>

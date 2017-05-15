@@ -16,7 +16,7 @@
     <body>
         <!--TITLE -->
         <div id="ttlh1">
-        <h1>Estadísticas de StuBasket</h1>
+        <h1>StuBasket App</h1>
         </div>
         <!--END TITLE -->
         <!--MENU -->

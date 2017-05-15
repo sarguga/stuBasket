@@ -56,13 +56,77 @@ section nav ul li a:hover{
     color: #FFF;
 }
 
+/* LINKS */
+a{
+    text-decoration: none;
+    color: #333;
+    font-family: century gothic;
+    font-weight: bold;   
+}
+a:hover{
+    background: #333;
+    box-shadow: 0 0 15px #333;
+    color:#fff;
+}
 /* SLIDER */
 .w3-content.w3-display-container{
     text-align: center;
     margin-top: 70px;
+   
 }
 
 .w3-display-container.mySlides img{
     max-width: 1000px;
     max-height: 500px;
+     box-shadow: 0 0 15px #333;
+}
+
+/* FORMULARIO */
+#form{
+    text-align: center;
+}
+
+#formulario{
+    border:2px solid #333;
+    box-shadow: 0 0 15px #fff;
+    border: 2px solid #333;
+    background: #cecece;
+    box-shadow: 2px 2px 10px #333;
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 12%;
+    padding: 15px 0px 15px 0px;
+}
+
+#tab{
+    border: 2px solid #333;
+    box-shadow: 0 0 15px #fff;
+    background: #cecece;
+    box-shadow: 2px 2px 10px #333;
+    width: 38%;
+    margin-left: 33%;
+    margin-top: 12%;
+    padding: 15px 0px 15px 0px;
+}
+
+#stats{
+    border: 2px solid #333;
+    box-shadow: 0 0 15px #fff;
+    background: #cecece;
+    box-shadow: 2px 2px 10px #333;
+    width: 30%;
+    margin-left: 36%;
+    margin-top: 12%;
+    padding: 15px 0px 15px 0px;
+}
+
+/* ERROR */
+#error {
+    box-shadow: 0 0 15px #333;
+    margin-top: 5%;
+    margin-bottom: 40px;
+    width:30%;
+    margin-left: 36%;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
